@@ -273,7 +273,7 @@ export default function Hero() {
                 flexShrink: 0,
               }}>
                 <img
-                  src="/headshot.jpg"
+                  src={`${import.meta.env.BASE_URL}headshot.jpg`}
                   alt="Alvin Chen"
                   style={{
                     width: '100%', height: '100%',
@@ -309,7 +309,6 @@ export default function Hero() {
                 {[
                   { val: '3.82', label: 'GPA', color: '#FF6EB4' },
                   { val: 'CS + AM', label: 'Major', color: '#C084FC' },
-                  ,
                 ].map(stat => (
                   <div key={stat.label} style={{
                     background: 'rgba(255,255,255,0.8)',
