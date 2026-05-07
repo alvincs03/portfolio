@@ -25,7 +25,7 @@ const experiences = [
     grad: 'linear-gradient(135deg, #4DC9F6 0%, #0EA5E9 100%)',
     shadowColor: 'rgba(77,201,246,0.25)',
     bgColor: 'rgba(240,251,255,0.9)',
-    icon: '/fullstack.png', iconEmoji: null,
+    icon: `${import.meta.env.BASE_URL}fullstack.png`, iconEmoji: null,
     bullets: [
       'Developed 5 production pages for Brown\'s Graduate Engineering Council, serving 300+ graduate users and accelerating manual deploys by 67% through a CI/CD pipeline',
       'Built a dual-layer caching system combining Redis server-side caching with CDN edge caching, scaling to 10,000+ page visits with significantly reduced latency and server load',
@@ -41,7 +41,7 @@ const experiences = [
     grad: 'linear-gradient(135deg, #FF6EB4 0%, #E91E8C 100%)',
     shadowColor: 'rgba(255,110,180,0.25)',
     bgColor: 'rgba(255,240,248,0.9)',
-    icon: '/beats-logo.png', iconEmoji: null,
+    icon: `${import.meta.env.BASE_URL}beats-logo.png`, iconEmoji: null,
     bullets: [
       'Built and automated a Python pipeline processing 2,000+ consumer reviews with NLP analysis, achieving 98% sentiment accuracy and saving 40+ hours of manual work per cycle',
       'Designed a Tableau/Plotly dashboard translating raw sentiment data into an interpretable scoring system, enabling non-technical stakeholders to independently action consumer insights',

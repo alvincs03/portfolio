@@ -97,7 +97,7 @@ export default function Education() {
                 overflow: 'hidden',
                 padding: '6px',
               }}>
-                <img src="/brownlogo.png" alt="Brown University" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <img src={`${import.meta.env.BASE_URL}brownlogo.png`} alt="Brown University" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
               </div>
 
               <div style={{

@@ -1,10 +1,10 @@
 import { useScrollReveal } from '../hooks/useScrollReveal'
 
 const contacts = [
-  { label: 'Email', value: 'alvin_chen@brown.edu',    href: 'mailto:alvin_chen@brown.edu',      logo: '/gmail.png',    color: '#FF6EB4', grad: 'linear-gradient(135deg, #FF6EB4, #E91E8C)' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/alv1nchen', href: 'https://linkedin.com/in/alv1nchen', logo: '/linkedin.jpeg', color: '#4DC9F6', grad: 'linear-gradient(135deg, #4DC9F6, #0EA5E9)' },
-  { label: 'GitHub', value: 'github.com/alvincs03',    href: 'https://github.com/alvincs03',      logo: '/github.png',   color: '#C084FC', grad: 'linear-gradient(135deg, #C084FC, #9333EA)' },
-  { label: 'Phone', value: '312-868-3270',             href: 'tel:3128683270',                    logo: '/phone.jpeg',   color: '#4ADE80', grad: 'linear-gradient(135deg, #4ADE80, #22C55E)' },
+  { label: 'Email', value: 'alvin_chen@brown.edu',    href: 'mailto:alvin_chen@brown.edu',      logo: `${import.meta.env.BASE_URL}gmail.png`,    color: '#FF6EB4', grad: 'linear-gradient(135deg, #FF6EB4, #E91E8C)' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/alv1nchen', href: 'https://linkedin.com/in/alv1nchen', logo: `${import.meta.env.BASE_URL}linkedin.jpeg`, color: '#4DC9F6', grad: 'linear-gradient(135deg, #4DC9F6, #0EA5E9)' },
+  { label: 'GitHub', value: 'github.com/alvincs03',    href: 'https://github.com/alvincs03',      logo: `${import.meta.env.BASE_URL}github.png`,   color: '#C084FC', grad: 'linear-gradient(135deg, #C084FC, #9333EA)' },
+  { label: 'Phone', value: '312-868-3270',             href: 'tel:3128683270',                    logo: `${import.meta.env.BASE_URL}phone.jpeg`,   color: '#4ADE80', grad: 'linear-gradient(135deg, #4ADE80, #22C55E)' },
 ]
 
 export default function Contact() {
