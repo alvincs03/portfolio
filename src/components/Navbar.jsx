@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react'
 
 const navLinks = [
-  { label: 'About', href: '#about' },
-  { label: 'Education', href: '#education' },
+  { label: 'About',      href: '#about' },
+  { label: 'Education',  href: '#education' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Clubs', href: '#extracurriculars' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects',   href: '#projects' },
+  { label: 'Clubs',      href: '#extracurriculars' },
+  { label: 'Skills',     href: '#skills' },
+  { label: 'Contact',    href: '#contact' },
 ]
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen]       = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -25,12 +25,11 @@ export default function Navbar() {
       position: 'fixed',
       top: 0, left: 0, right: 0,
       zIndex: 1000,
-      transition: 'all 0.4s cubic-bezier(0.22,1,0.36,1)',
-      background: scrolled ? 'rgba(255,255,255,0.85)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-      WebkitBackdropFilter: scrolled ? 'blur(20px) saturate(180%)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(255,110,180,0.12)' : 'none',
-      boxShadow: scrolled ? '0 4px 24px rgba(0,0,0,0.06)' : 'none',
+      background: scrolled ? 'rgba(8,13,26,0.9)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(20px)' : 'none',
+      WebkitBackdropFilter: scrolled ? 'blur(20px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : 'none',
+      transition: 'background 0.3s ease, border-color 0.3s ease',
     }}>
       <div style={{
         maxWidth: '1200px', margin: '0 auto',
@@ -38,18 +37,14 @@ export default function Navbar() {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         height: '68px',
       }}>
-        {/* Logo — no period */}
+        {/* Logo */}
         <a href="#about" style={{ textDecoration: 'none' }}>
           <span style={{
-            fontFamily: 'Syne, Space Grotesk, sans-serif',
+            fontFamily: 'Syne, sans-serif',
             fontWeight: 800,
-            fontSize: '1.6rem',
+            fontSize: '1.5rem',
             letterSpacing: '-1px',
-            background: 'linear-gradient(135deg, #FF6EB4 0%, #C084FC 50%, #4DC9F6 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-            filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.1))',
+            color: '#22d3ee',
           }}>
             alvin
           </span>
@@ -65,18 +60,18 @@ export default function Navbar() {
                 fontFamily: 'DM Sans, sans-serif',
                 fontWeight: 500,
                 fontSize: '0.875rem',
-                color: '#374151',
+                color: '#64748b',
                 textDecoration: 'none',
                 padding: '6px 12px',
-                borderRadius: '10px',
-                transition: 'all 0.2s ease',
+                borderRadius: '8px',
+                transition: 'color 150ms ease, background 150ms ease',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.color = '#FF6EB4'
-                e.currentTarget.style.background = 'rgba(255,110,180,0.08)'
+                e.currentTarget.style.color = '#22d3ee'
+                e.currentTarget.style.background = 'rgba(34,211,238,0.08)'
               }}
               onMouseLeave={e => {
-                e.currentTarget.style.color = '#374151'
+                e.currentTarget.style.color = '#64748b'
                 e.currentTarget.style.background = 'transparent'
               }}
             >
@@ -91,16 +86,25 @@ export default function Navbar() {
           aria-label="Toggle menu"
           style={{
             display: 'none',
-            background: 'linear-gradient(135deg, #FF6EB4, #C084FC)',
-            border: 'none',
-            borderRadius: '10px',
+            background: 'rgba(255,255,255,0.06)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            borderRadius: '8px',
             padding: '8px 12px',
             cursor: 'pointer',
-            color: '#fff',
-            fontSize: '1.1rem',
+            color: '#94a3b8',
+            fontSize: '1rem',
             lineHeight: 1,
+            transition: 'color 150ms ease, background 150ms ease',
           }}
           className="hamburger"
+          onMouseEnter={e => {
+            e.currentTarget.style.color = '#22d3ee'
+            e.currentTarget.style.background = 'rgba(34,211,238,0.08)'
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.color = '#94a3b8'
+            e.currentTarget.style.background = 'rgba(255,255,255,0.06)'
+          }}
         >
           {open ? '✕' : '☰'}
         </button>
@@ -109,12 +113,12 @@ export default function Navbar() {
       {/* Mobile menu */}
       {open && (
         <div style={{
-          background: 'rgba(255,255,255,0.97)',
+          background: 'rgba(8,13,26,0.97)',
           backdropFilter: 'blur(20px)',
-          borderTop: '1px solid rgba(255,110,180,0.1)',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
           padding: '1rem 2rem 1.5rem',
-          display: 'flex', flexDirection: 'column', gap: '0.4rem',
-          animation: 'fadeInDown 0.2s ease',
+          display: 'flex', flexDirection: 'column', gap: '0.25rem',
+          animation: 'fadeInDown 0.18s ease',
         }}>
           {navLinks.map(link => (
             <a
@@ -122,15 +126,22 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setOpen(false)}
               style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: 600,
+                fontFamily: 'DM Sans, sans-serif',
+                fontWeight: 500,
                 fontSize: '1rem',
-                color: '#111827',
+                color: '#94a3b8',
                 textDecoration: 'none',
                 padding: '10px 16px',
-                borderRadius: '12px',
-                background: 'rgba(255,110,180,0.05)',
-                border: '1px solid rgba(255,110,180,0.1)',
+                borderRadius: '8px',
+                transition: 'color 150ms ease, background 150ms ease',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.color = '#22d3ee'
+                e.currentTarget.style.background = 'rgba(34,211,238,0.08)'
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.color = '#94a3b8'
+                e.currentTarget.style.background = 'transparent'
               }}
             >
               {link.label}
@@ -142,7 +153,7 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 860px) {
           .desktop-nav { display: none !important; }
-          .hamburger { display: block !important; }
+          .hamburger   { display: block !important; }
         }
       `}</style>
     </nav>

@@ -9,17 +9,15 @@ const projects = [
     date: 'Mar 2026',
     url: 'https://code-lens-lake.vercel.app/',
     stack: ['Python', 'Flask', 'React', 'PostgreSQL', 'Anthropic API', 'GitHub OAuth 2.0'],
-    accentColor: '#FF6EB4',
-    darkColor: '#E91E8C',
-    grad: 'linear-gradient(135deg, #FF6EB4 0%, #C084FC 100%)',
+    accentColor: '#22d3ee',
     bullets: [
       'AI code review platform adopted by 60+ students, scoring 0–100 on production readiness across 7 languages with GitHub OAuth integration',
       'Cut cached request latency 30% via 3-tier caching: PostgreSQL persistence, SHA-256 hashing, in-memory validation',
     ],
     stats: [
-      { val: '60+', label: 'Users' },
-      { val: '7', label: 'Languages' },
-      { val: '30%', label: 'Faster' },
+      { val: '60+',  label: 'Users' },
+      { val: '7',    label: 'Languages' },
+      { val: '30%',  label: 'Faster' },
     ],
   },
   {
@@ -29,51 +27,47 @@ const projects = [
     date: 'Jan 2026',
     url: 'https://icon-fraud-detector-ml-system-762r.vercel.app/',
     stack: ['Python', 'FastAPI', 'scikit-learn', 'Next.js', 'PostgreSQL'],
-    accentColor: '#4DC9F6',
-    darkColor: '#0EA5E9',
-    grad: 'linear-gradient(135deg, #4DC9F6 0%, #4ADE80 100%)',
+    accentColor: '#f472b6',
     bullets: [
       'Fraud classifier trained on 50K+ transactions: 95% accuracy, 94% precision, 92% recall via velocity, recency & merchant entropy features',
       'FastAPI scoring endpoint with sub-second latency, secured via JWT + Google OAuth',
     ],
     stats: [
-      { val: '95%', label: 'Accuracy' },
+      { val: '95%',  label: 'Accuracy' },
       { val: '50K+', label: 'Transactions' },
-      { val: '<1s', label: 'Latency' },
+      { val: '<1s',  label: 'Latency' },
     ],
   },
 ]
 
-function BrowserPreview({ url, title, accentColor, grad }) {
-  const [loaded, setLoaded] = useState(false)
+function BrowserPreview({ url, title, accentColor }) {
   const [failed, setFailed] = useState(false)
 
   return (
     <div style={{
-      borderRadius: '14px',
+      borderRadius: '12px',
       overflow: 'hidden',
-      border: '1.5px solid rgba(0,0,0,0.1)',
-      boxShadow: '0 4px 24px rgba(0,0,0,0.12)',
-      background: '#1a1a2e',
+      border: '1px solid rgba(255,255,255,0.07)',
+      background: '#0a0f1e',
     }}>
       {/* Browser chrome */}
       <div style={{
-        background: '#1a1a2e',
-        padding: '10px 14px',
+        background: '#0a0f1e',
+        padding: '9px 12px',
         display: 'flex',
         alignItems: 'center',
-        gap: '8px',
-        borderBottom: '1px solid rgba(255,255,255,0.07)',
+        gap: '7px',
+        borderBottom: '1px solid rgba(255,255,255,0.06)',
       }}>
-        <div style={{ display: 'flex', gap: '5px', flexShrink: 0 }}>
+        <div style={{ display: 'flex', gap: '4px', flexShrink: 0 }}>
           {['#FF5F56', '#FFBD2E', '#27C93F'].map(c => (
-            <div key={c} style={{ width: '9px', height: '9px', borderRadius: '50%', background: c }} />
+            <div key={c} style={{ width: '8px', height: '8px', borderRadius: '50%', background: c }} />
           ))}
         </div>
         <div style={{
-          flex: 1, background: 'rgba(255,255,255,0.08)',
-          borderRadius: '6px', padding: '3px 10px',
-          fontSize: '0.62rem', color: 'rgba(255,255,255,0.45)',
+          flex: 1, background: 'rgba(255,255,255,0.07)',
+          borderRadius: '5px', padding: '3px 9px',
+          fontSize: '0.6rem', color: 'rgba(255,255,255,0.35)',
           fontFamily: 'DM Sans, sans-serif', fontWeight: 500,
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
         }}>
@@ -84,25 +78,23 @@ function BrowserPreview({ url, title, accentColor, grad }) {
           target="_blank"
           rel="noreferrer"
           style={{
-            fontSize: '0.65rem', fontWeight: 700, color: accentColor,
+            fontSize: '0.62rem', fontWeight: 700, color: accentColor,
             textDecoration: 'none', flexShrink: 0,
             fontFamily: 'Space Grotesk, sans-serif',
-            letterSpacing: '0.3px',
           }}
         >
-          ↗ Open
+          ↗
         </a>
       </div>
 
-      {/* Iframe container */}
-      <div style={{ position: 'relative', height: '280px', overflow: 'hidden', background: '#f5f5f5' }}>
+      {/* Iframe */}
+      <div style={{ position: 'relative', height: '260px', overflow: 'hidden' }}>
         {!failed ? (
           <>
             <iframe
               src={url}
               title={title}
               loading="lazy"
-              onLoad={() => setLoaded(true)}
               onError={() => setFailed(true)}
               style={{
                 width: '160%',
@@ -114,7 +106,6 @@ function BrowserPreview({ url, title, accentColor, grad }) {
                 pointerEvents: 'none',
               }}
             />
-            {/* Hover overlay */}
             <a
               href={url}
               target="_blank"
@@ -123,30 +114,29 @@ function BrowserPreview({ url, title, accentColor, grad }) {
                 position: 'absolute', inset: 0,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: 'transparent',
-                transition: 'background 0.25s ease',
+                transition: 'background 220ms ease',
                 textDecoration: 'none',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.background = 'rgba(0,0,0,0.45)'
+                e.currentTarget.style.background = 'rgba(0,0,0,0.5)'
                 e.currentTarget.querySelector('span').style.opacity = '1'
-                e.currentTarget.querySelector('span').style.transform = 'translateY(0)'
+                e.currentTarget.querySelector('span').style.transform = 'translateY(0) scale(1)'
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.background = 'transparent'
                 e.currentTarget.querySelector('span').style.opacity = '0'
-                e.currentTarget.querySelector('span').style.transform = 'translateY(8px)'
+                e.currentTarget.querySelector('span').style.transform = 'translateY(8px) scale(0.96)'
               }}
             >
               <span style={{
                 opacity: 0,
-                transform: 'translateY(8px)',
-                transition: 'opacity 0.2s ease, transform 0.2s ease',
+                transform: 'translateY(8px) scale(0.96)',
+                transition: 'opacity 180ms ease, transform 180ms cubic-bezier(0.23,1,0.32,1)',
                 background: 'rgba(255,255,255,0.95)',
-                color: '#111827',
+                color: '#080d1a',
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: 700, fontSize: '0.85rem',
-                padding: '10px 20px', borderRadius: '100px',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
+                fontWeight: 700, fontSize: '0.82rem',
+                padding: '9px 18px', borderRadius: '100px',
                 letterSpacing: '-0.2px',
               }}>
                 Visit Live Site →
@@ -154,7 +144,6 @@ function BrowserPreview({ url, title, accentColor, grad }) {
             </a>
           </>
         ) : (
-          /* Fallback if iframe blocked */
           <a
             href={url}
             target="_blank"
@@ -162,23 +151,23 @@ function BrowserPreview({ url, title, accentColor, grad }) {
             style={{
               display: 'flex', flexDirection: 'column',
               alignItems: 'center', justifyContent: 'center',
-              height: '100%',
-              background: `linear-gradient(135deg, ${accentColor}11, ${accentColor}22)`,
-              textDecoration: 'none', gap: '12px',
+              height: '100%', gap: '10px',
+              background: `${accentColor}08`,
+              textDecoration: 'none',
             }}
           >
             <div style={{
-              width: '56px', height: '56px', borderRadius: '16px',
-              background: grad,
+              width: '48px', height: '48px', borderRadius: '14px',
+              background: `${accentColor}20`,
+              border: `1px solid ${accentColor}35`,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '1.6rem',
-              boxShadow: `0 8px 24px ${accentColor}44`,
+              fontSize: '1.4rem',
             }}>
               🔗
             </div>
             <div style={{
               fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: 700, fontSize: '0.9rem', color: accentColor,
+              fontWeight: 700, fontSize: '0.85rem', color: accentColor,
             }}>
               Visit Live Site →
             </div>
@@ -196,41 +185,41 @@ function ProjectCard({ project, index }) {
     <div
       ref={ref}
       className={`reveal${visible ? ' visible' : ''}`}
-      style={{ transitionDelay: `${index * 0.12}s` }}
+      style={{ transitionDelay: `${index * 0.1}s` }}
     >
       <div
-        className="hover-scale project-inner"
+        className="project-inner"
         style={{
-          background: '#fff',
-          border: '1.5px solid rgba(0,0,0,0.07)',
-          borderRadius: '24px',
+          background: '#0e1628',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '20px',
           overflow: 'hidden',
-          boxShadow: `0 8px 40px ${project.accentColor}18, 0 1px 0 rgba(255,255,255,0.9) inset`,
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
+          transition: 'border-color 220ms ease',
         }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = project.accentColor === '#22d3ee'
+          ? 'rgba(34,211,238,0.3)'
+          : 'rgba(244,114,182,0.3)'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
       >
         {/* Left: preview */}
         <div style={{
           padding: '1.5rem',
-          borderRight: '1.5px solid rgba(0,0,0,0.06)',
-          background: 'linear-gradient(160deg, #fafafa 0%, #f5f5f5 100%)',
+          borderRight: '1px solid rgba(255,255,255,0.06)',
+          background: '#080d1a',
           display: 'flex',
           flexDirection: 'column',
-          gap: '1rem',
+          gap: '0.85rem',
         }}>
-          {/* Number + label */}
+          {/* Number + live link */}
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span style={{
-              fontFamily: 'Syne, Space Grotesk, sans-serif',
-              fontWeight: 800, fontSize: '3.5rem',
-              lineHeight: 1,
-              letterSpacing: '-3px',
-              background: project.grad,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              opacity: 0.35,
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 800, fontSize: '2.8rem',
+              lineHeight: 1, letterSpacing: '-2px',
+              color: project.accentColor,
+              opacity: 0.12,
             }}>
               {project.num}
             </span>
@@ -238,30 +227,33 @@ function ProjectCard({ project, index }) {
               href={project.url}
               target="_blank"
               rel="noreferrer"
+              className="btn-press"
               style={{
                 fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: 600, fontSize: '0.78rem',
+                fontWeight: 600, fontSize: '0.72rem',
                 color: project.accentColor,
                 textDecoration: 'none',
-                background: `${project.accentColor}15`,
-                border: `1.5px solid ${project.accentColor}33`,
-                borderRadius: '100px',
-                padding: '4px 14px',
-                transition: 'background 0.15s ease',
+                background: project.accentColor === '#22d3ee'
+                  ? 'rgba(34,211,238,0.1)'
+                  : 'rgba(244,114,182,0.1)',
+                border: `1px solid ${project.accentColor === '#22d3ee'
+                  ? 'rgba(34,211,238,0.28)'
+                  : 'rgba(244,114,182,0.28)'}`,
+                borderRadius: '7px',
+                padding: '4px 12px',
+                transition: 'background 150ms ease',
               }}
-              onMouseEnter={e => e.currentTarget.style.background = `${project.accentColor}28`}
-              onMouseLeave={e => e.currentTarget.style.background = `${project.accentColor}15`}
+              onMouseEnter={e => e.currentTarget.style.background = project.accentColor === '#22d3ee'
+                ? 'rgba(34,211,238,0.18)'
+                : 'rgba(244,114,182,0.18)'}
+              onMouseLeave={e => e.currentTarget.style.background = project.accentColor === '#22d3ee'
+                ? 'rgba(34,211,238,0.1)'
+                : 'rgba(244,114,182,0.1)'}
             >
               ↗ Live
             </a>
           </div>
-
-          <BrowserPreview
-            url={project.url}
-            title={project.title}
-            accentColor={project.accentColor}
-            grad={project.grad}
-          />
+          <BrowserPreview url={project.url} title={project.title} accentColor={project.accentColor} />
         </div>
 
         {/* Right: info */}
@@ -270,54 +262,50 @@ function ProjectCard({ project, index }) {
           display: 'flex',
           flexDirection: 'column',
         }}>
-          {/* Header */}
           <div style={{ marginBottom: '1.25rem' }}>
             <div style={{
-              display: 'inline-block',
-              fontFamily: 'Space Grotesk, sans-serif',
-              fontWeight: 700, fontSize: '0.65rem',
-              letterSpacing: '2.5px', textTransform: 'uppercase',
+              fontSize: '0.62rem',
+              fontWeight: 700,
+              letterSpacing: '2.5px',
+              textTransform: 'uppercase',
               color: project.accentColor,
-              marginBottom: '6px',
+              marginBottom: '5px',
+              fontFamily: 'DM Sans, sans-serif',
             }}>
               {project.date} · {project.subtitle}
             </div>
             <h3 style={{
-              fontFamily: 'Syne, Space Grotesk, sans-serif',
-              fontWeight: 800, fontSize: '1.6rem',
-              letterSpacing: '-0.8px', color: '#111827',
-              lineHeight: 1.1, marginBottom: '0',
+              fontFamily: 'Syne, sans-serif',
+              fontWeight: 800, fontSize: '1.55rem',
+              letterSpacing: '-0.5px', color: '#f1f5f9',
+              lineHeight: 1.05,
             }}>
               {project.title}
             </h3>
           </div>
 
-          {/* Stats */}
+          {/* Stats — solid color, no gradient text */}
           <div style={{
-            display: 'flex', gap: '0',
-            borderRadius: '14px',
-            overflow: 'hidden',
-            border: '1.5px solid rgba(0,0,0,0.07)',
+            display: 'flex', gap: '1.5rem',
             marginBottom: '1.25rem',
+            paddingBottom: '1.25rem',
+            borderBottom: '1px solid rgba(255,255,255,0.06)',
           }}>
             {project.stats.map((s, i) => (
-              <div key={i} style={{
-                flex: 1, padding: '10px 6px',
-                textAlign: 'center',
-                background: i % 2 === 0 ? '#fafafa' : '#fff',
-                borderRight: i < project.stats.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none',
-              }}>
+              <div key={i}>
                 <div style={{
-                  fontFamily: 'Syne, Space Grotesk, sans-serif',
-                  fontWeight: 800, fontSize: '1.1rem', letterSpacing: '-0.5px',
-                  background: project.grad,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  fontFamily: 'Syne, sans-serif',
+                  fontWeight: 800, fontSize: '1.2rem',
+                  letterSpacing: '-0.5px',
+                  color: project.accentColor,
                 }}>
                   {s.val}
                 </div>
-                <div style={{ fontSize: '0.65rem', fontWeight: 600, color: '#9CA3AF', letterSpacing: '0.3px' }}>
+                <div style={{
+                  fontSize: '0.62rem', fontWeight: 700,
+                  color: '#475569', letterSpacing: '0.5px',
+                  textTransform: 'uppercase',
+                }}>
                   {s.label}
                 </div>
               </div>
@@ -329,32 +317,37 @@ function ProjectCard({ project, index }) {
             {project.bullets.map((b, i) => (
               <div key={i} style={{
                 display: 'flex', gap: '10px',
-                fontSize: '0.825rem', fontWeight: 400, color: '#4B5563', lineHeight: 1.65,
+                fontSize: '0.825rem', fontWeight: 400, color: '#94a3b8', lineHeight: 1.65,
               }}>
                 <div style={{
-                  width: '16px', height: '16px', borderRadius: '50%',
-                  background: project.grad,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  flexShrink: 0, marginTop: '2px', fontSize: '0.55rem', color: '#fff', fontWeight: 800,
-                }}>
-                  {i + 1}
-                </div>
+                  width: '4px', height: '4px', borderRadius: '50%',
+                  background: project.accentColor,
+                  flexShrink: 0, marginTop: '8px',
+                }} />
                 {b}
               </div>
             ))}
           </div>
 
-          {/* Stack */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem', marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid rgba(0,0,0,0.06)' }}>
+          {/* Tech stack */}
+          <div style={{
+            display: 'flex', flexWrap: 'wrap', gap: '0.35rem',
+            marginTop: '1.25rem', paddingTop: '1rem',
+            borderTop: '1px solid rgba(255,255,255,0.06)',
+          }}>
             {project.stack.map(t => (
               <span key={t} style={{
-                background: `${project.accentColor}0e`,
-                border: `1px solid ${project.accentColor}28`,
+                background: project.accentColor === '#22d3ee'
+                  ? 'rgba(34,211,238,0.07)'
+                  : 'rgba(244,114,182,0.07)',
+                border: `1px solid ${project.accentColor === '#22d3ee'
+                  ? 'rgba(34,211,238,0.22)'
+                  : 'rgba(244,114,182,0.22)'}`,
                 borderRadius: '6px',
                 padding: '3px 9px',
-                fontSize: '0.7rem', fontWeight: 600,
+                fontSize: '0.68rem', fontWeight: 600,
                 color: project.accentColor,
-                letterSpacing: '0.2px',
+                fontFamily: 'Space Grotesk, sans-serif',
               }}>
                 {t}
               </span>
@@ -362,7 +355,6 @@ function ProjectCard({ project, index }) {
           </div>
         </div>
       </div>
-
     </div>
   )
 }
@@ -372,19 +364,18 @@ export default function Projects() {
 
   return (
     <section id="projects" style={{
-      background: '#fafafa',
+      background: '#0d1529',
       padding: '7rem 2rem',
       position: 'relative',
-      overflow: 'hidden',
     }}>
-      {/* Subtle grid paper background */}
+      {/* Subtle grid */}
       <div style={{
         position: 'absolute', inset: 0,
         backgroundImage: `
-          linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,0,0,0.025) 1px, transparent 1px)
+          linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px)
         `,
-        backgroundSize: '40px 40px',
+        backgroundSize: '52px 52px',
         pointerEvents: 'none',
       }} />
 
@@ -394,82 +385,78 @@ export default function Projects() {
           className={`reveal${titleVisible ? ' visible' : ''}`}
           style={{ marginBottom: '4rem' }}
         >
-          {/* Asymmetric heading */}
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
             <div>
-              <span style={{
-                display: 'block',
-                fontSize: '0.75rem', fontWeight: 700,
-                letterSpacing: '3px', textTransform: 'uppercase',
-                color: '#9333EA', marginBottom: '8px',
-                textShadow: '0 1px 3px rgba(147,51,234,0.2)',
-              }}>
-                — Selected Work —
-              </span>
+              <span className="section-label">Projects</span>
               <h2 style={{
-                fontFamily: 'Syne, Space Grotesk, sans-serif',
+                fontFamily: 'Syne, sans-serif',
                 fontWeight: 800,
                 fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
-                letterSpacing: '-1.5px', color: '#111827',
+                letterSpacing: '-1.5px', color: '#f1f5f9',
                 lineHeight: 1,
-                textShadow: '0 2px 8px rgba(0,0,0,0.08)',
               }}>
-                Projects
+                Selected work.
               </h2>
             </div>
             <p style={{
-              fontSize: '0.875rem', color: '#9CA3AF', fontWeight: 400,
-              maxWidth: '280px', textAlign: 'right', lineHeight: 1.6,
+              fontSize: '0.82rem', color: '#475569', fontWeight: 400,
+              maxWidth: '220px', textAlign: 'right', lineHeight: 1.6,
             }}>
-              Live previews — hover to explore each site
+              Hover the preview to explore live
             </p>
           </div>
-          {/* Divider */}
+          {/* Aqua-to-pink divider */}
           <div style={{
-            marginTop: '1.5rem', height: '2px',
-            background: 'linear-gradient(90deg, #FF6EB4, #C084FC, #4DC9F6, transparent)',
-            borderRadius: '1px',
+            marginTop: '1.5rem', height: '1px',
+            background: 'linear-gradient(90deg, #22d3ee, #f472b6, transparent)',
           }} />
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {projects.map((p, i) => (
             <ProjectCard key={i} project={p} index={i} />
           ))}
         </div>
 
         <div style={{
-          marginTop: '2rem',
-          padding: '1.25rem 1.75rem',
-          background: 'rgba(255,255,255,0.6)',
-          backdropFilter: 'blur(8px)',
-          border: '1.5px dashed rgba(0,0,0,0.1)',
-          borderRadius: '16px',
+          marginTop: '1.75rem',
+          padding: '1.2rem 1.5rem',
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px dashed rgba(255,255,255,0.08)',
+          borderRadius: '14px',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           flexWrap: 'wrap', gap: '0.75rem',
         }}>
-          <span style={{ fontSize: '0.85rem', fontWeight: 500, color: '#9CA3AF' }}>
-            More projects in progress...
+          <span style={{ fontSize: '0.84rem', fontWeight: 500, color: '#475569' }}>
+            More in progress
           </span>
           <a
             href="https://github.com/alvincs03"
             target="_blank"
             rel="noreferrer"
+            className="btn-press"
             style={{
-              fontSize: '0.8rem', fontWeight: 700, color: '#374151',
+              fontSize: '0.8rem', fontWeight: 600, color: '#94a3b8',
               textDecoration: 'none',
-              background: 'rgba(0,0,0,0.05)',
-              padding: '6px 16px', borderRadius: '100px',
-              border: '1px solid rgba(0,0,0,0.08)',
-              transition: 'background 0.15s ease',
+              background: 'rgba(255,255,255,0.04)',
+              padding: '6px 16px', borderRadius: '8px',
+              border: '1px solid rgba(255,255,255,0.08)',
+              transition: 'color 150ms ease, border-color 150ms ease',
             }}
-            onMouseEnter={e => e.currentTarget.style.background = 'rgba(0,0,0,0.09)'}
-            onMouseLeave={e => e.currentTarget.style.background = 'rgba(0,0,0,0.05)'}
+            onMouseEnter={e => {
+              e.currentTarget.style.color = '#22d3ee'
+              e.currentTarget.style.borderColor = 'rgba(34,211,238,0.25)'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.color = '#94a3b8'
+              e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'
+            }}
           >
-            🐙 View GitHub →
+            View GitHub →
           </a>
         </div>
       </div>
+
       <style>{`
         @media (max-width: 860px) {
           .project-inner { grid-template-columns: 1fr !important; }

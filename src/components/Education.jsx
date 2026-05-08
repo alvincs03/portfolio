@@ -10,147 +10,125 @@ const courses = [
   'Linear Algebra',
 ]
 
-const courseColors = ['#FF6EB4', '#C084FC', '#4DC9F6', '#4ADE80', '#FBBF24', '#FB923C', '#FF6EB4']
-
 export default function Education() {
   const [titleRef, titleVisible] = useScrollReveal()
-  const [leftRef, leftVisible] = useScrollReveal()
+  const [leftRef,  leftVisible]  = useScrollReveal()
   const [rightRef, rightVisible] = useScrollReveal()
 
   return (
     <section id="education" style={{
-      background: 'linear-gradient(180deg, #fafafa 0%, #fff0f8 50%, #f0fbff 100%)',
+      background: '#0d1529',
       padding: '7rem 2rem',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      {/* Background decoration */}
-      <div style={{
-        position: 'absolute', top: '-100px', right: '-100px',
-        width: '500px', height: '500px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,110,180,0.07) 0%, transparent 70%)',
-        pointerEvents: 'none',
-      }} />
-
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        {/* Section heading */}
+        {/* Heading */}
         <div
           ref={titleRef}
           className={`reveal${titleVisible ? ' visible' : ''}`}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ marginBottom: '4rem' }}
         >
-          <span style={{
-            display: 'inline-block',
-            fontSize: '0.75rem', fontWeight: 700,
-            letterSpacing: '3px', textTransform: 'uppercase',
-            color: '#E91E8C', marginBottom: '12px',
-            textShadow: '0 1px 3px rgba(233,30,140,0.2)',
-          }}>
-            — Background —
-          </span>
+          <span className="section-label">Education</span>
           <h2 style={{
-            fontFamily: 'Syne, Space Grotesk, sans-serif',
+            fontFamily: 'Syne, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(2rem, 4.5vw, 3rem)',
             letterSpacing: '-1.5px',
-            color: '#111827',
-            textShadow: '0 2px 8px rgba(0,0,0,0.08)',
+            color: '#f1f5f9',
+            lineHeight: 1,
           }}>
-            Education
+            Where I learned to build.
           </h2>
         </div>
 
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '2rem',
+          gap: '1.5rem',
           alignItems: 'start',
         }} className="two-col">
+
           {/* Left: University card */}
           <div
             ref={leftRef}
-            className={`hover-scale reveal-left${leftVisible ? ' visible' : ''}`}
+            className={`reveal-left${leftVisible ? ' visible' : ''}`}
             style={{
-              background: 'rgba(255,255,255,0.9)',
-              backdropFilter: 'blur(12px)',
-              border: '1.5px solid rgba(255,110,180,0.15)',
-              borderRadius: '24px',
-              boxShadow: '0 8px 40px rgba(255,110,180,0.10)',
+              background: '#0e1628',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
               overflow: 'hidden',
             }}
           >
-            {/* Gradient top bar */}
-            <div style={{
-              height: '5px',
-              background: 'linear-gradient(90deg, #FF6EB4, #C084FC, #4DC9F6)',
-            }} />
+            {/* Single aqua top accent — 2px, not rainbow */}
+            <div style={{ height: '2px', background: '#22d3ee' }} />
 
             <div style={{ padding: '2rem' }}>
-              {/* Brown logo */}
               <div style={{
-                width: '60px', height: '60px', borderRadius: '16px',
+                width: '52px', height: '52px', borderRadius: '12px',
                 background: '#fff',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '1.25rem',
-                border: '1.5px solid rgba(255,110,180,0.15)',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.08)',
+                marginBottom: '1.5rem',
                 overflow: 'hidden',
-                padding: '6px',
+                padding: '8px',
               }}>
-                <img src={`${import.meta.env.BASE_URL}brownlogo.png`} alt="Brown University" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                <img
+                  src={`${import.meta.env.BASE_URL}brownlogo.png`}
+                  alt="Brown University"
+                  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                />
               </div>
 
               <div style={{
-                fontFamily: 'Space Grotesk, sans-serif',
-                fontWeight: 700,
-                fontSize: '1.5rem',
+                fontFamily: 'Syne, sans-serif',
+                fontWeight: 800,
+                fontSize: '1.4rem',
                 letterSpacing: '-0.5px',
-                color: '#111827',
+                color: '#f1f5f9',
                 marginBottom: '4px',
               }}>
                 Brown University
               </div>
 
-              <div style={{ fontSize: '0.85rem', color: '#6B7280', fontWeight: 500, marginBottom: '1.25rem' }}>
+              <div style={{ fontSize: '0.85rem', color: '#475569', fontWeight: 500, marginBottom: '1.5rem' }}>
                 Providence, Rhode Island
               </div>
 
               <div style={{
-                background: 'linear-gradient(135deg, #fff0f8, #fce7f3)',
-                border: '1px solid rgba(255,110,180,0.2)',
-                borderRadius: '14px',
-                padding: '12px 16px',
-                marginBottom: '1.25rem',
-                fontSize: '0.9rem',
+                background: 'rgba(34,211,238,0.06)',
+                border: '1px solid rgba(34,211,238,0.18)',
+                borderRadius: '10px',
+                padding: '11px 14px',
+                marginBottom: '1.5rem',
+                fontSize: '0.875rem',
                 fontWeight: 600,
-                color: '#374151',
+                color: '#94a3b8',
               }}>
-                B.S. in Computer Science & Applied Mathematics
+                B.S. Computer Science + Applied Mathematics
               </div>
 
-              <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
                 {[
-                  { label: 'Expected May 2028', color: '#FF6EB4' },
-                  { label: 'GPA: 3.82 / 4.0', color: '#C084FC' },
+                  { label: 'Expected May 2028', accent: '#22d3ee' },
+                  { label: 'GPA: 3.82 / 4.0',  accent: '#f472b6' },
                 ].map(badge => (
                   <span key={badge.label} style={{
-                    background: `${badge.color}18`,
-                    border: `1.5px solid ${badge.color}44`,
-                    borderRadius: '100px',
-                    padding: '5px 14px',
-                    fontWeight: 600, fontSize: '0.8rem',
-                    color: badge.color,
+                    background: badge.accent === '#22d3ee'
+                      ? 'rgba(34,211,238,0.1)'
+                      : 'rgba(244,114,182,0.1)',
+                    border: `1px solid ${badge.accent === '#22d3ee'
+                      ? 'rgba(34,211,238,0.28)'
+                      : 'rgba(244,114,182,0.28)'}`,
+                    borderRadius: '8px',
+                    padding: '5px 12px',
+                    fontWeight: 600, fontSize: '0.78rem',
+                    color: badge.accent,
+                    fontFamily: 'Space Grotesk, sans-serif',
                   }}>
                     {badge.label}
                   </span>
                 ))}
               </div>
-
-              {/* Decorative gradient bar */}
-              <div style={{
-                height: '4px', borderRadius: '2px',
-                background: 'linear-gradient(90deg, #FF6EB4 0%, #C084FC 50%, #4DC9F6 100%)',
-              }} />
             </div>
           </div>
 
@@ -159,72 +137,73 @@ export default function Education() {
             ref={rightRef}
             className={`reveal-right${rightVisible ? ' visible' : ''}`}
             style={{
-              background: 'rgba(255,255,255,0.85)',
-              backdropFilter: 'blur(12px)',
-              border: '1.5px solid rgba(77,201,246,0.15)',
-              borderRadius: '24px',
-              boxShadow: '0 8px 40px rgba(77,201,246,0.10)',
-              overflow: 'hidden',
+              background: '#0e1628',
+              border: '1px solid rgba(255,255,255,0.08)',
+              borderRadius: '20px',
+              padding: '2rem',
             }}
           >
             <div style={{
-              height: '5px',
-              background: 'linear-gradient(90deg, #4DC9F6, #4ADE80)',
-            }} />
-
-            <div style={{ padding: '2rem' }}>
-              <h3 style={{
-                fontFamily: 'Space Grotesk, sans-serif',
+              display: 'flex', alignItems: 'center', gap: '10px',
+              marginBottom: '1.5rem',
+            }}>
+              <div style={{
+                width: '3px', height: '14px',
+                background: '#f472b6',
+                borderRadius: '2px',
+              }} />
+              <span style={{
+                fontSize: '0.72rem',
                 fontWeight: 700,
-                fontSize: '1.1rem',
-                letterSpacing: '-0.3px',
-                marginBottom: '1.25rem',
-                color: '#111827',
+                letterSpacing: '3px',
+                textTransform: 'uppercase',
+                color: '#475569',
+                fontFamily: 'DM Sans, sans-serif',
               }}>
                 Relevant Coursework
-              </h3>
+              </span>
+            </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                {courses.map((course, i) => (
-                  <div
-                    key={i}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '12px',
-                      background: 'rgba(255,255,255,0.9)',
-                      border: `1px solid ${courseColors[i]}22`,
-                      borderLeft: `3px solid ${courseColors[i]}`,
-                      borderRadius: '12px',
-                      padding: '10px 14px',
-                      fontSize: '0.875rem',
-                      fontWeight: 500,
-                      color: '#374151',
-                      cursor: 'default',
-                      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                    }}
-                    onMouseEnter={e => {
-                      e.currentTarget.style.transform = 'scale(1.02) translateX(4px)'
-                      e.currentTarget.style.boxShadow = `0 4px 16px ${courseColors[i]}20`
-                    }}
-                    onMouseLeave={e => {
-                      e.currentTarget.style.transform = 'none'
-                      e.currentTarget.style.boxShadow = 'none'
-                    }}
-                  >
-                    <span style={{
-                      width: '26px', height: '26px', borderRadius: '8px',
-                      background: `${courseColors[i]}18`,
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontFamily: 'Space Grotesk, sans-serif',
-                      fontWeight: 700, fontSize: '0.7rem',
-                      color: courseColors[i],
-                      flexShrink: 0,
-                    }}>
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    {course}
-                  </div>
-                ))}
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.45rem' }}>
+              {courses.map((course, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: '12px',
+                    padding: '10px 14px',
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: '10px',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    color: '#94a3b8',
+                    cursor: 'default',
+                    transition: 'border-color 150ms ease, color 150ms ease, background 150ms ease',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.borderColor = 'rgba(34,211,238,0.25)'
+                    e.currentTarget.style.color = '#f1f5f9'
+                    e.currentTarget.style.background = 'rgba(34,211,238,0.05)'
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'
+                    e.currentTarget.style.color = '#94a3b8'
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.03)'
+                  }}
+                >
+                  <span style={{
+                    fontSize: '0.65rem',
+                    fontWeight: 700,
+                    color: '#22d3ee',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    minWidth: '22px',
+                    opacity: 0.75,
+                  }}>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  {course}
+                </div>
+              ))}
             </div>
           </div>
         </div>

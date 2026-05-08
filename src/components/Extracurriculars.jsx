@@ -5,8 +5,7 @@ const clubs = [
     name: 'Fullstack @ Brown',
     role: 'Fullstack Software Engineer',
     dates: 'Aug 2025 – Present',
-    grad: 'linear-gradient(135deg, #4DC9F6 0%, #0EA5E9 100%)',
-    shadowColor: 'rgba(77,201,246,0.2)',
+    accentColor: '#22d3ee',
     logo: `${import.meta.env.BASE_URL}fullstack.png`,
     description: "Brown's top software engineering club. Ships production apps for clients across campus through Agile sprints and code reviews.",
     tags: ['React', 'Node.js', 'Agile', 'CI/CD'],
@@ -15,8 +14,7 @@ const clubs = [
     name: 'FinTech @ Brown',
     role: 'Research Analyst',
     dates: 'Fall 2024 – Present',
-    grad: 'linear-gradient(135deg, #C084FC 0%, #9333EA 100%)',
-    shadowColor: 'rgba(192,132,252,0.2)',
+    accentColor: '#f472b6',
     logo: `${import.meta.env.BASE_URL}fintech.png`,
     description: 'Analyze companies in the financial technology sector, create detailed reports on market trends, and present findings to club members and industry professionals.',
     tags: ['Finance', 'Stocks', 'Data Analysis'],
@@ -25,12 +23,11 @@ const clubs = [
     name: 'Tempo Performance Co.',
     role: 'Director',
     dates: 'Fall 2024 – Present',
-    grad: 'linear-gradient(135deg, #FBBF24 0%, #F59E0B 100%)',
-    shadowColor: 'rgba(251,191,36,0.2)',
+    accentColor: '#22d3ee',
     logo: `${import.meta.env.BASE_URL}tempologo.png`,
     description: 'Weekly dance team at Brown. Lead rehearsals, choreograph routines, and organize performances for campus events.',
     tags: ['Dance', 'Leadership', 'Teamwork'],
-  }
+  },
 ]
 
 function ClubCard({ club, delay }) {
@@ -43,33 +40,33 @@ function ClubCard({ club, delay }) {
       style={{ transitionDelay: delay }}
     >
       <div
-        className="hover-scale"
         style={{
-          background: 'rgba(255,255,255,0.85)',
-          backdropFilter: 'blur(12px)',
-          border: '1.5px solid rgba(255,255,255,0.9)',
-          borderRadius: '20px',
-          boxShadow: `0 6px 30px ${club.shadowColor}`,
+          background: '#0e1628',
+          border: '1px solid rgba(255,255,255,0.08)',
+          borderRadius: '18px',
           overflow: 'hidden',
           height: '100%',
           display: 'flex',
           flexDirection: 'column',
+          transition: 'border-color 220ms ease',
         }}
+        onMouseEnter={e => e.currentTarget.style.borderColor = club.accentColor === '#22d3ee'
+          ? 'rgba(34,211,238,0.3)'
+          : 'rgba(244,114,182,0.3)'}
+        onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}
       >
-        {/* Gradient top bar */}
-        <div style={{ height: '4px', background: club.grad }} />
-
         {/* Header */}
         <div style={{ padding: '1.5rem 1.5rem 0' }}>
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1rem' }}>
             <div style={{
-              width: '48px', height: '48px', borderRadius: '14px',
-              background: '#fff',
+              width: '46px', height: '46px', borderRadius: '12px',
+              background: 'rgba(255,255,255,0.9)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              boxShadow: `0 4px 14px ${club.shadowColor}`,
               flexShrink: 0,
               overflow: 'hidden',
-              border: '1px solid rgba(0,0,0,0.08)',
+              border: `1px solid ${club.accentColor === '#22d3ee'
+                ? 'rgba(34,211,238,0.2)'
+                : 'rgba(244,114,182,0.2)'}`,
               padding: '6px',
             }}>
               <img src={club.logo} alt={club.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
@@ -78,24 +75,32 @@ function ClubCard({ club, delay }) {
               <div style={{
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: 700, fontSize: '1rem',
-                letterSpacing: '-0.3px', color: '#111827',
+                color: '#f1f5f9',
                 lineHeight: 1.2, marginBottom: '2px',
               }}>
                 {club.name}
               </div>
-              <div style={{ fontSize: '0.75rem', color: '#9CA3AF', fontWeight: 500 }}>
+              <div style={{ fontSize: '0.75rem', color: '#475569', fontWeight: 500 }}>
                 {club.dates}
               </div>
             </div>
           </div>
 
+          {/* Role badge — solid border/text, no gradient background */}
           <span style={{
             display: 'inline-block',
-            fontSize: '0.72rem', fontWeight: 600,
-            padding: '3px 12px', borderRadius: '100px',
-            background: club.grad, color: '#fff',
+            fontSize: '0.7rem', fontWeight: 700,
+            padding: '3px 11px',
+            borderRadius: '6px',
+            background: club.accentColor === '#22d3ee'
+              ? 'rgba(34,211,238,0.1)'
+              : 'rgba(244,114,182,0.1)',
+            border: `1px solid ${club.accentColor === '#22d3ee'
+              ? 'rgba(34,211,238,0.28)'
+              : 'rgba(244,114,182,0.28)'}`,
+            color: club.accentColor,
             marginBottom: '1rem',
-            boxShadow: `0 2px 8px ${club.shadowColor}`,
+            fontFamily: 'Space Grotesk, sans-serif',
           }}>
             {club.role}
           </span>
@@ -105,7 +110,7 @@ function ClubCard({ club, delay }) {
         <div style={{ padding: '0 1.5rem 1.5rem', flex: 1 }}>
           <p style={{
             fontSize: '0.875rem', fontWeight: 400,
-            color: '#4B5563', lineHeight: 1.7,
+            color: '#64748b', lineHeight: 1.7,
             marginBottom: '1.25rem',
           }}>
             {club.description}
@@ -113,11 +118,12 @@ function ClubCard({ club, delay }) {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
             {club.tags.map(t => (
               <span key={t} style={{
-                background: 'rgba(0,0,0,0.04)',
-                border: '1px solid rgba(0,0,0,0.08)',
-                borderRadius: '8px',
-                padding: '3px 10px',
-                fontSize: '0.72rem', fontWeight: 600, color: '#6B7280',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: '6px',
+                padding: '3px 9px',
+                fontSize: '0.7rem', fontWeight: 600, color: '#94a3b8',
+                fontFamily: 'Space Grotesk, sans-serif',
               }}>
                 {t}
               </span>
@@ -134,47 +140,33 @@ export default function Extracurriculars() {
 
   return (
     <section id="extracurriculars" style={{
-      background: 'linear-gradient(180deg, #fff0f8 0%, #faf5ff 50%, #f0fdf4 100%)',
+      background: '#080d1a',
       padding: '7rem 2rem',
       position: 'relative',
       overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', bottom: '-80px', right: '-80px',
-        width: '380px', height: '380px', borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(74,222,128,0.07) 0%, transparent 70%)',
-      }} />
-
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div
           ref={titleRef}
           className={`reveal${titleVisible ? ' visible' : ''}`}
-          style={{ textAlign: 'center', marginBottom: '4rem' }}
+          style={{ marginBottom: '4rem' }}
         >
-          <span style={{
-            display: 'inline-block',
-            fontSize: '0.75rem', fontWeight: 700,
-            letterSpacing: '3px', textTransform: 'uppercase',
-            color: '#16A34A', marginBottom: '12px',
-            textShadow: '0 1px 3px rgba(22,163,74,0.2)',
-          }}>
-            — Campus Life —
-          </span>
+          <span className="section-label">Campus Life</span>
           <h2 style={{
-            fontFamily: 'Syne, Space Grotesk, sans-serif',
+            fontFamily: 'Syne, sans-serif',
             fontWeight: 800,
             fontSize: 'clamp(2rem, 4.5vw, 3rem)',
-            letterSpacing: '-1.5px', color: '#111827',
-            textShadow: '0 2px 8px rgba(0,0,0,0.08)',
+            letterSpacing: '-1.5px', color: '#f1f5f9',
+            lineHeight: 1,
           }}>
-            Extracurriculars
+            Beyond the code.
           </h2>
         </div>
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.5rem',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: '1.25rem',
         }}>
           {clubs.map((club, i) => (
             <ClubCard key={i} club={club} delay={`${i * 0.08}s`} />
